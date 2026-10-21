@@ -6,39 +6,46 @@
 //
 
 import SwiftUI
-struct presentmelayan : View{
-    var body :some View{
-        List{
-            VStack{
+
+struct PresentMeLayan: View {
+    let name: String = "Layan"
+    let age: Int = 22
+    let isAvailable: Bool = true
+
+    var body: some View {
+        List {
+            VStack {
                 Image(.profile)
                     .resizable()
-                    .frame(
-                        width: 120,
-                        height: 120
-                    )
+                    .scaledToFill()
+                    .frame(width: 120, height: 120)
                     .clipShape(.circle)
-                Text("Layan")
+
+                Text("\(name), \(age)")
                     .font(.title)
                     .fontWeight(.semibold)
+
+                if isAvailable {
+                    Text("Available")
+                        .foregroundStyle(.green)
+                } else {
+                    Text("Unavailable")
+                        .foregroundStyle(.red)
+                }
             }
-            
-            .frame(maxWidth:.infinity,
-                   alignment: .center)
+            .frame(maxWidth: .infinity, alignment: .center)
+            .padding(.vertical,8)
             .listRowBackground(Color.clear)
-            
+
             Section {
-                
-                Text("Im 22 years")
-            }
-            header:{
+                Text("I'm \(age) years old")
+            } header: {
                 Text("About")
             }
-            
         }
-        
     }
 }
 
-#Preview{
-    presentmelayan()
+#Preview {
+    PresentMeLayan()
 }
